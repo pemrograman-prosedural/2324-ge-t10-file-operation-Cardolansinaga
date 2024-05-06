@@ -5,10 +5,9 @@
 #include "dorm.h"
 #include "student.h"
 
-/**
- * @brief define your structure, enums, globally accessible variables, and function prototypes here.
- * The actual function implementation should be defined in the corresponding source file.
- *
- */
-
+void student_add(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
+void student_print_all(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
+void dorm_add(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
+void dorm_print_all(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
+void print_unassigned_students(struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
 #endif
