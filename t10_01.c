@@ -17,9 +17,13 @@ typedef struct {
 
 void dorm_add(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
 void dorm_print_all(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
-void student_add(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
+void student_add(char *student_name, int student_id, struct student_t **mhs, int *size) {
+    (*mhs)[*size].name = malloc(strlen(student_name) + 1);
+    strcpy((*mhs)[*size].name, student_name);
+    (*mhs)[*size].id = student_id;
+}
 void student_print_all(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
-void print_unassigned_students(struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
+void print_unassigned_students(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
 void handle_unknown_command(char *input);
 
 int main(int _argc, char **_argv) {
@@ -116,6 +120,7 @@ void dorm_add(char *input, struct student_t **mhs, int *size, struct dorm_t **do
 
     (*size2)++;
 }
+
 void dorm_print_all(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2) {
     if (*size2 == 0) {
         printf("No dorms to display.\n");
@@ -183,8 +188,12 @@ void student_print_all(char *input, struct student_t **mhs, int *size, struct do
         printf("--------------------\n");
     }
 }
-
-void print_unassigned_students(struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2) {
+struct dorm_t {
+    char *name;
+    struct student_t *students;
+    int student_count;
+};
+void print_unassigned_students(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2) {
     int found = 0;
     for (int i = 0; i < *size; i++) {
         if ((*mhs)[i].dorm == NULL) {
@@ -200,7 +209,6 @@ void print_unassigned_students(struct student_t **mhs, int *size, struct dorm_t 
         printf("No unassigned students.\n");
     }
 }
-
 void handle_unknown_command(char *input) {
-    printf("Error: Unknown command '%s'\n", input);
+    printf("Error: Unknown command '%s'. Please check your command and try again.\n", input);
 }
