@@ -1,0 +1,9 @@
+apa itu file operation dalam bahasa c?
+contoh code file operation dalam bahasa c
+Bagaimana cara membaca isi dari file dalam bahasa C?
+How to read the contents of a file in C?
+bagaimana mengembangkan suatu solusi yang akan me-load initial data ke dalam simulato
+apa maksudnya data bersumber dari berkas yang disimpan dalam memori 'storage'
+apa maksudnya storage itu?
+perbaikilah 20 | (*dorm)[*size2 - 1] = create_dorm(input);
+How can I fix the conflicting types error in my code?

@@ -1,35 +1,54 @@
 #include "dorm.h"
-#include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 
-struct dorm_t create_dorm(char *input)
+/**
+ * @brief Define the complete function definition here. Be sure to enlist the prototype of each function
+ * defined here in the corresponding header file.
+ *
+ */
+
+Dorm create_dorm ( char *_name, unsigned short _capacity, gender_t _gender )
 {
-    struct dorm_t dorm;
-    strcpy(dorm.name, strtok(NULL, "#"));
-    dorm.capacity = atoi(strtok(NULL, "#"));
-    char *stop = strtok(NULL, "#");
-    if (strcmp(stop, "male")== 0)
-    {
-        dorm.gender = GENDER_MALE;
-    } else if (strcmp(stop, "female") == 0)
-    {
-        dorm.gender = GENDER_FEMALE;
-    }
-    return dorm;
+    Dorm dorm_;
+
+    dorm_.residents_num = 0;
+    strcpy( dorm_.name, _name );
+    dorm_.capacity = _capacity;
+    dorm_.gender   = _gender;
+
+    return dorm_;
 }
 
-void print_dorm(struct dorm_t dorm)
+void print_dorm ( Dorm dorm_to_print )
 {
-    printf("%s|%hu|", dorm.name, dorm.capacity);
-    if (dorm.gender == GENDER_MALE)
-    {
-        printf("male\n");
-    } else if (dorm.gender == GENDER_FEMALE)
-    {
-        printf("female\n");
-    }
+    printf( "%s", dorm_to_print.name );
+
+    ( dorm_to_print.gender == GENDER_MALE )?
+        printf( "|%d|male\n", dorm_to_print.capacity ):
+        printf( "|%d|female\n", dorm_to_print.capacity );
+
+    fflush( stdout );    
 }
 
-struct dorm_t *new_dorm = create_dorm(*int);
+void printDormDetails ( Dorm dorm_to_print )
+{
+    printf( "%s|%d", dorm_to_print.name, dorm_to_print.capacity );
 
+    ( dorm_to_print.gender == GENDER_MALE )?
+        printf( "|male" ) : printf( "|female" );
+    
+    printf( "|%d\n", dorm_to_print.residents_num );
+
+    fflush( stdout );  
+}
+
+short findDormIdx ( char* _name, Dorm *list, int length )
+{
+    for ( short i=0; i<length; i++ ) {
+        if ( strcmp( list[i].name, _name ) == 0 )
+            return i;
+    }
+
+    return -1;
+}

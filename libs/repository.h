@@ -5,17 +5,12 @@
 #include "dorm.h"
 #include "student.h"
 
-void student_add(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
-void student_print_all(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
-void dorm_add(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
-void dorm_print_all(char *input, struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2);
-void print_unassigned_students(struct student_t **mhs, int *size, struct dorm_t **dorm, int *size2) {
-    printf("Unassigned students:\n");
+/**
+ * @brief define your structure, enums, globally accessible variables, and function prototypes here.
+ * The actual function implementation should be defined in the corresponding source file.
+ *
+ */
 
-    for (int i = 0; i < *size; i++) {
-        if ((*mhs)[i].dorm == NULL) {
-            printf("%s\n", (*mhs)[i].name);
-        }
-    }
-}
+short line_count(char* fileName);
+
 #endif
